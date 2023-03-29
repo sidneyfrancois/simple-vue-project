@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 
 defineProps<{ msg: string }>()
 
-
+const author = reactive({
+  name: 'John Doe',
+  books: [
+    'Vue 2 - Advanced Guide',
+    'Vue 3 - Basic Guide',
+    'Vue 4 - The Mystery'
+  ]
+})
 
 const count = ref(0);
 const exampleReactiveObject = reactive({ employeeId: 1, employeeName: "João"});
@@ -12,6 +19,18 @@ function changeEmployee() {
   exampleReactiveObject.employeeId = 2;
   exampleReactiveObject.employeeName = "Beltrano";
 }
+
+function addBook() {
+  author.books.push('New book');
+}
+
+function removeBook() {
+  author.books.pop();
+}
+
+const publishedBooksThree = computed(() => {
+  return author.books.length > 3 ? 'more than three books' : 'three or less than three books';
+});
 
 </script>
 
@@ -22,6 +41,16 @@ function changeEmployee() {
     <h2>{{ exampleReactiveObject.employeeId }}</h2>
     <h2>{{ exampleReactiveObject.employeeName }}</h2>
     <button type="button" @click="changeEmployee">Change object</button>
+  </div>
+
+  <div class="card">
+    <h2>List of books, author: {{ author.name }}</h2>
+    <li v-for="book of author.books">
+      {{ book }}
+    </li>
+    <h3>The list of books has {{ publishedBooksThree }}</h3>
+    <button type="button" @click="addBook">Add book</button>
+    <button type="button" @click="removeBook">Remove book</button>
   </div>
 
   <div class="card">
