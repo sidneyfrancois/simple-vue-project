@@ -1,13 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 defineProps<{ msg: string }>()
 
-const count = ref(0)
+
+
+const count = ref(0);
+const exampleReactiveObject = reactive({ employeeId: 1, employeeName: "João"});
+
+function changeEmployee() {
+  exampleReactiveObject.employeeId = 2;
+  exampleReactiveObject.employeeName = "Beltrano";
+}
+
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
+
+  <div class="card">
+    <h2>{{ exampleReactiveObject.employeeId }}</h2>
+    <h2>{{ exampleReactiveObject.employeeName }}</h2>
+    <button type="button" @click="changeEmployee">Change object</button>
+  </div>
 
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
