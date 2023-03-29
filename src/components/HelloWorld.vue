@@ -14,6 +14,7 @@ const author = reactive({
 
 const count = ref(0);
 const exampleReactiveObject = reactive({ employeeId: 1, employeeName: "João"});
+const showTitle = ref(true);
 
 function changeEmployee() {
   exampleReactiveObject.employeeId = 2;
@@ -28,6 +29,10 @@ function removeBook() {
   author.books.pop();
 }
 
+function toggleShowTitle() {
+  showTitle.value = !showTitle.value;
+}
+
 const publishedBooksThree = computed(() => {
   return author.books.length > 3 ? 'more than three books' : 'three or less than three books';
 });
@@ -37,11 +42,14 @@ const publishedBooksThree = computed(() => {
 <template>
   <h1>{{ msg }}</h1>
 
-  <div class="card">
-    <h2>{{ exampleReactiveObject.employeeId }}</h2>
-    <h2>{{ exampleReactiveObject.employeeName }}</h2>
-    <button type="button" @click="changeEmployee">Change object</button>
-  </div>
+  <template v-if="showTitle">
+    <div class="card">
+      <h2>{{ exampleReactiveObject.employeeId }}</h2>
+      <h2>{{ exampleReactiveObject.employeeName }}</h2>
+      <button type="button" @click="changeEmployee">Change object</button>
+    </div>
+  </template>
+  <button type="button" @click="toggleShowTitle">Show/Hide</button>
 
   <div class="card">
     <h2>List of books, author: {{ author.name }}</h2>
