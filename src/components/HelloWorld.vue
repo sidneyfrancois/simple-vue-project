@@ -15,6 +15,12 @@ const author = reactive({
 const count = ref(0);
 const exampleReactiveObject = reactive({ employeeId: 1, employeeName: "João"});
 const showTitle = ref(true);
+const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
+const myObject = reactive({
+  title: 'How to do lists in Vue',
+  author: 'Jane Doe',
+  publishedAt: '2016-04-10'
+})
 
 function changeEmployee() {
   exampleReactiveObject.employeeId = 2;
@@ -59,6 +65,20 @@ const publishedBooksThree = computed(() => {
     <h3>The list of books has {{ publishedBooksThree }}</h3>
     <button type="button" @click="addBook">Add book</button>
     <button type="button" @click="removeBook">Remove book</button>
+  </div>
+
+  <div class="card">
+    <li v-for="item of items">
+      {{ item.message }}
+    </li>
+  </div>
+
+  <div class="card">
+    <ul>
+      <li v-for="value in myObject">
+        {{ value }}
+      </li>
+    </ul>
   </div>
 
   <div class="card">
