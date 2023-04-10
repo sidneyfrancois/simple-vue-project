@@ -1,24 +1,16 @@
 <script setup lang="ts">
 import EventTest from './components/EventTest.vue';
 import HelloWorld from './components/HelloWorld.vue'
+import Card from './components/Card.vue';
 </script>
 
 <template>
-  <EventTest />
-  <HelloWorld msg="Vite + Vue" />
+  <Card p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4/>
+  <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
+  <!-- <EventTest />
+  <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+
