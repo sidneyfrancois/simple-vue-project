@@ -19,6 +19,9 @@ export default {
     removeItem() {
       this.obj.arr.pop();
     },
+    clearData() {
+      this.obj.arr = [];
+    },
   },
   computed: {
     // computed properties are cached based on their reactive dependencies
