@@ -1,11 +1,10 @@
 <script setup lang="ts">
-
+import InformationComponent from './components/InformationComponent.vue';
 </script>
 
 <template>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+
+  <InformationComponent />
   <!-- <EventTest />
   <HelloWorld msg="Vite + Vue" /> -->
 </template>
